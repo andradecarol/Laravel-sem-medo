@@ -110,5 +110,7 @@ Exemplo:
 Passo 9:
 1. Acrescentar o conteúdo dentro de cada página, dentro da section content
 
+RECOMENDADO: Dar merge entre Develop e assets-frontend-estatico
+
 
 
