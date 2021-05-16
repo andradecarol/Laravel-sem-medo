@@ -16,17 +16,17 @@ use App\Http\Controllers\Site\HomeController;
 
 Route::namespace('App\Http\Controllers\Site')->group(function(){
     
-    Route::get('/', 'HomeController');
+    Route::get('/', 'HomeController')->name('home');
 
-    Route::get('produtos', 'CategoryController@index');
-    Route::get('produtos/{slug}', 'CategoryController@show'); //slug é a descrição da page no navegador, utilizado para SEO google
+    Route::get('produtos', 'CategoryController@index')->name('products');
+    Route::get('produtos/{slug}', 'CategoryController@show')->name('productsShow'); //slug é a descrição da page no navegador, utilizado para SEO google
 
-    Route::get('blog', 'BlogController');
+    Route::get('blog', 'BlogController')->name('blog');
 
-    Route::view('sobre', view:'Site\about\index'); //por ser uma página 100% estática, não é necessário Controller
+    Route::view('sobre', view:'Site\about\index')->name('about'); //por ser uma página 100% estática, não é necessário Controller
 
-    Route::get('contato', 'ContactController@index');
-    Route::post('contato', 'ContactController@form')
+    Route::get('contato', 'ContactController@index')->name('contact');
+    Route::post('contato', 'ContactController@form')->name('contactForm');
     
 });
 
