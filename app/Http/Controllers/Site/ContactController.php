@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Site;
 
+
+    
 use App\Http\Controllers\Controller;
+use App\Models\Contact as ModelsContact;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -17,7 +20,9 @@ class ContactController extends Controller
         return view('site\contact\index');
     }
 
-   public function form(Request $request) { //Método responsável pela lógica do contato
-        ddd($resquest ->all());
+   public function form(Request $request)  //Método responsável pela lógica do contato
+   {
+       $contact = ModelsContact::create($request ->all());       
+       ddd($contact);
    } 
 }
