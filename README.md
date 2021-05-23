@@ -112,5 +112,34 @@ Passo 9:
 
 RECOMENDADO: Dar merge entre Develop e assets-frontend-estatico
 
+RECOMENDADO: Criar nova branch "tabelas-do-banco' a partir de de Develop
 
+Passo 1: Mapear quais tabelas deverão ser criadas
+1- De acordo com esse projeto, as tabelas serão: users, categories, products, posts, contact
 
+Passo 2: Criar a primeira tabela
+2- Criar o model:
+$ php artisan make:model Contact -f -m -s (f = factory, m = migration, s = seed. Para ver mais opções, basta colocar --help)
+3- No model Contact criado, dentro da classe, montar o $fillable (colunas preenchiveis)
+4- Em migration, incluir nas tabelas as colunas criadas no model:
+Ex: $table->string(column: 'name');
+5- Rodar as migrations
+$ php artisan migrate
+6- Após isso, já é possível visualizar as tabelas criadas no banco de dados
+
+Obs.: A tabelas users já vem criada por padrão pelo laravel
+Obs2.: A tabela contact não se relaciona com ngm
+Obs3.: As tabelas categories e prodocts se relacionam, e a tabela que recebe a FK deve ser criada depois
+
+Passo 3: Criar as demais tabelas, na ordem correta
+Nesse caso, iremos criar primeiro a tabela caregory, pois uma categoria recebe N produtos
+A tabela de products receberá a FK de categories
+
+Passo 4: declarar a relação entre as tabelas 
+1. Usar 'belongsTo' em model
+2. Colocar a id da category na migration e de produtos
+3. Criar a forein no banco, em migration
+
+Passo 5: Verificar atualizações no banco
+1. $ php artisan migrate:fresh //irá apagar as tabelas e recriar
+2. No banco de dados verificar as novas tabelas e a FK criadas
